@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hora do dia</title>
+    <style>
+
+        body{
+            background-color: #3b81d3;
+            font: normal 15pt Arial;
+        }
+        header{
+            color: white;
+            text-align: center;
+        }
+        section{
+            background-color: white;
+            border-radius: 10px;
+            padding: 10px;
+            width: 500px;
+            margin: 0 auto;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.445);
+        }
+        
+        footer{
+            color: white;
+            text-align: center;
+            font-style: italic;
+        }
+        img{
+            border-radius: 50%;
+            width: 250px;
+            height: 250px;
+        }
+        div {
+            text-align: center;
+        }
+    </style>
+</head>
+<body onload="carregar()">
+    <header>
+        <h1>
+            Hora do Dia
+        </h1>
+    </header>
+    <section>
+        <div id="msg">
+
+        </div>
+        <div id="foto">
+            <img src="images/manha.jpg" alt="Foto do dia" id="imagem">
+        </div>
+    </section>
+    <footer><p>Desenvolvido por Jackson Silva</p></footer>
+
+
+    <script>
+        function carregar(){
+            let msg = document.getElementById('msg')
+            let img = document.getElementById('imagem')
+            let data = new Date()
+            let hora = data.getHours()
+            let minutos = data.getMinutes()
+            msg.innerHTML = `<p>Agora são: ${hora} horas e ${minutos} minutos</p>`
+            if (hora >= 0 && hora < 12){
+                // BOM DIA!
+                msg.innerHTML += `<p>Bom dia!</p>`
+                img.src = 'images/manha.jpg'
+                document.body.style.background = '#c7a464'
+            } else if (hora >= 12 && hora < 18){
+                // BOA TARDE!
+                msg.innerHTML += `<p>Boa tarde!</p>`
+                img.src ='images/tarde.jpg'
+                document.body.style.background = '#8a390c'
+            } else{
+                // BOA NOITE!
+                msg.innerHTML += `<p>Boa noite!</p>`
+                img.src = 'images/noite.jpg'
+                document.body.style.background = '#2a2a2a'
+            }
+        }
+    </script>
+</body>
+</html>
